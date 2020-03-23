@@ -25,6 +25,11 @@
                 *ngIf="isAuth"
               >Deconnexion</a>
             </li>
+            <li class="nav-item" *ngIf="isAuth">
+              <a href="" class="nav-link">
+                <span class="text-danger">{{ session_mail[0] }}</span>
+              </a>
+            </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search">

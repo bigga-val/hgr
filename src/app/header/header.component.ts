@@ -10,6 +10,7 @@ import * as firebase from 'firebase';
 export class HeaderComponent implements OnInit {
 
   isAuth: boolean;
+  session_mail: string;
 
   constructor(private authService: AuthService) { }
 
@@ -18,7 +19,7 @@ export class HeaderComponent implements OnInit {
       (user) => {
         if(user) {
           this.isAuth = true;
-          let session_mail = localStorage.getItem('session_mail')
+          this.session_mail = firebase.auth().currentUser.email;
         } else {
           this.isAuth = false;
         }
