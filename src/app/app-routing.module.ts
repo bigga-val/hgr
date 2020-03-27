@@ -6,13 +6,15 @@ import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { CreateFicheComponent } from './create-fiche/create-fiche.component';
 import { AuthGuard } from './guards/auth.guard';
+import { CreatePatientComponent } from './create-patient/create-patient.component';
 
 
 const routes: Routes = [
   { path: 'header', component: HeaderComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
-  { path: 'createfiche', component: CreateFicheComponent, canActivate:[AuthGuard] }
+  { path: 'createfiche', component: CreateFicheComponent, canActivate:[AuthGuard] },
+  { path: 'createpatient', component: CreatePatientComponent, canActivate:[AuthGuard] }
 ];
 
 @NgModule({

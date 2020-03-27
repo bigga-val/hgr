@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-md-12">
+        <form action="" [formGroup]="createPatientForm" (ngSubmit)="savePatient()">
+            <div class="form-group">
+                <label for="nom patient">Nom du Patient</label>
+                <input type="text" class="form-control" name="nomPatient" formControlName="nomPatient">
+            </div>
+            <div class="form-group">
+                <label for="nom patient">Postnom du Patient</label>
+                <input type="text" class="form-control" name="pontnomPatient" formControlName="postnomPatient">
+            </div>
+            <div class="form-group">
+                <label for="nom patient">Date de naissance</label>
+                <input type="date" class="form-control" name="dateNaissance" formControlName=dateNaissance>
+            </div>
+            <div class="form-group">
+                <label for="nom patient">Lieu de naissance</label>
+                <input type="text" class="form-control" name="lieuNaissance" formControlName="lieuNaissance">
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-success" [disabled]="createPatientForm.invalid || loading">
+            </div>
+        </form>
+    </div>
+</div>

@@ -10,15 +10,15 @@ import { config } from 'rxjs';
 export class AppComponent {
   title = 'hgr';
   constructor(){
-    const firebaseConfig = {
-      apiKey: "AIzaSyD4j-1poAjO8dRw5ZiFecHb42SXVI6x8Fc",
-      authDomain: "mwangejidispensaire.firebaseapp.com",
-      databaseURL: "https://mwangejidispensaire.firebaseio.com",
-      projectId: "mwangejidispensaire",
-      storageBucket: "mwangejidispensaire.appspot.com",
-      messagingSenderId: "1010197745648",
-      appId: "1:1010197745648:web:69cceb6edaadf80eef5735",
-      measurementId: "G-0YNJ28TGW9"
+    var firebaseConfig = {
+      apiKey: "AIzaSyBtTWUfqesk4i5HpQrodf0BOfMUrDzh938",
+      authDomain: "mwangejidispensaire-aef96.firebaseapp.com",
+      databaseURL: "https://mwangejidispensaire-aef96.firebaseio.com",
+      projectId: "mwangejidispensaire-aef96",
+      storageBucket: "mwangejidispensaire-aef96.appspot.com",
+      messagingSenderId: "128258831317",
+      appId: "1:128258831317:web:4ea7f9e3d181de1e71835c",
+      measurementId: "G-C26KPKHVS2"
     };
     firebase.initializeApp(firebaseConfig);
   }

@@ -9,6 +9,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SigninComponent } from './signin/signin.component';
 import { CreateFicheComponent } from './create-fiche/create-fiche.component';
 
+import * as firebase from 'firebase';
+import { CreatePatientComponent } from './create-patient/create-patient.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,6 +20,7 @@ import { CreateFicheComponent } from './create-fiche/create-fiche.component';
     SignupComponent,
     SigninComponent,
     CreateFicheComponent,
+    CreatePatientComponent,
   ],
   imports: [
     BrowserModule,
