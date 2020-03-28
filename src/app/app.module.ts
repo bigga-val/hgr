@@ -10,7 +10,9 @@ import { SigninComponent } from './signin/signin.component';
 import { CreateFicheComponent } from './create-fiche/create-fiche.component';
 
 import * as firebase from 'firebase';
-import { CreatePatientComponent } from './create-patient/create-patient.component';
+import { CreatePatientComponent } from './patient/create-patient/create-patient.component';
+import { PatientListeComponent } from './patient/patient-liste/patient-liste.component';
+import { SinglePatientComponent } from './patient/single-patient/single-patient.component';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { CreatePatientComponent } from './create-patient/create-patient.componen
     SigninComponent,
     CreateFicheComponent,
     CreatePatientComponent,
+    PatientListeComponent,
+    SinglePatientComponent,
   ],
   imports: [
     BrowserModule,

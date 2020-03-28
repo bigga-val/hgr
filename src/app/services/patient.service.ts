@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Patient } from '../models/patient/patient';
 import * as firebase from 'firebase';
+import { resolve, reject } from 'q';
 
 @Injectable({
   providedIn: 'root'
@@ -28,11 +29,25 @@ export class PatientService {
   }
 
   getPatients() {
-    firebase.database().ref('/patient').on(
+    firebase.database().ref('/patients').on(
       'value',
       (data: firebase.database.DataSnapshot) => {
         this.patients = data.val() ? data.val() : [];
         this.emettrePatients();
+      }
+    );
+  }
+
+  getSinglePatient(id: number){
+    return new Promise(
+      (resolve, reject) => {
+        firebase.database().ref('/patients/' + id).once('value').then(
+          (data) => {
+            resolve(data.val());
+          },(error) => {
+            reject(error);
+          }
+        );
       }
     );
   }
