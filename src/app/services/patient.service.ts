@@ -18,13 +18,13 @@ export class PatientService {
     this.patientSubject.next(this.patients);
   }
 
-  savePatient() {
+  savePatients() {
     firebase.database().ref('/patients').set(this.patients);
   }
 
   createNewPatient(patient: Patient) {
     this.patients.push(patient);
-    this.savePatient();
+    this.savePatients();
     this.emettrePatients();
   }
 
@@ -50,5 +50,17 @@ export class PatientService {
         );
       }
     );
+  }
+  removePatient(patient: Patient){
+    const patientIndexToremove = this.patients.findIndex(
+      (patientElement) => {
+        if(patientElement === patient) {
+          return true;
+        }
+      }
+    );
+    this.patients.splice(patientIndexToremove, 1);
+    this.savePatients();
+    this.emettrePatients();
   }
 }

@@ -14,11 +14,11 @@
                 <tbody>
                     <tr *ngFor="let patient of patients; let i = index" (click)="onViewPatient(i)">
                         <td>{{ i }}</td>
-                        <td>{{ patient.nomPatient }}</td>
+                        <td>{{ patient.id }}</td>
                         <td>{{ patient.postnomPatient }}</td>
                         <td>{{ patient.dateNaissance }}</td>
                         <td> {{ patient.lieuNaissance }} </td>
-                        <td (click)='onViewPatient(i)'> <a href=""> voir </a></td>
+                        <td > <a href="" (click)='onViewPatient(i)'> voir </a></td>
                     </tr>
                 </tbody>
             </table>

@@ -1,1 +1,20 @@
-<p>single-patient works!</p>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-hover">
+            <thead>
+                <th>Nom</th>
+                <th>Postnom</th>
+                <th>Date de Naissance</th>
+                <th>Lieu de Naissance</th>
+            </thead>
+            <tbody>
+                <td>{{ patient.nomPatient | uppercase }}</td>
+                <td>{{ patient.postnomPatient | uppercase }}</td>
+                <td>{{ patient.lieuNaissance | uppercase }}</td>
+                <td>{{ patient.dateNaissance }}</td>
+            </tbody>
+        </table>
+        
+        
+    </div>
+</div>

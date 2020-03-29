@@ -13,6 +13,7 @@ import * as firebase from 'firebase';
 import { CreatePatientComponent } from './patient/create-patient/create-patient.component';
 import { PatientListeComponent } from './patient/patient-liste/patient-liste.component';
 import { SinglePatientComponent } from './patient/single-patient/single-patient.component';
+import { QuatreCentQuatreComponent } from './quatre-cent-quatre/quatre-cent-quatre.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { SinglePatientComponent } from './patient/single-patient/single-patient.
     CreatePatientComponent,
     PatientListeComponent,
     SinglePatientComponent,
+    QuatreCentQuatreComponent,
   ],
   imports: [
     BrowserModule,
