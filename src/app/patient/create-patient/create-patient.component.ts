@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PatientService } from '../../services/patient.service';
 import { Router } from '@angular/router'
+import * as firebase from 'firebase';
+
 
 
 @Component({
@@ -35,11 +37,15 @@ export class CreatePatientComponent implements OnInit {
   }
 
   savePatient(){
+    var identifiant = this.createPatientForm.get('nomPatient').value;
+    var fiche = this.createFiche(identifiant);
     const patient = {
-      nomPatient: this.createPatientForm.get('nomPatient').value,
+      nomPatient: identifiant,
       postnomPatient: this.createPatientForm.get('postnomPatient').value,
       lieuNaissance: this.createPatientForm.get('lieuNaissance').value,
       dateNaissance: this.createPatientForm.get('dateNaissance').value,
+      dateEnregistrementPatient: new Date(),
+      idFichePatient: fiche,
     };
     this.patientService.createNewPatient(patient);
     this.router.navigate(['/createfiche']);
@@ -49,5 +55,17 @@ export class CreatePatientComponent implements OnInit {
     //   this.profileService.createNewProfile(profile);
     //   this.router.navigate(['/all-profiles']);
     // }
+  }
+
+  createFiche(param){
+    var newPostKey = firebase.database().ref().push().key;
+    var dat = new Date();
+    var datee = dat.getMonth();
+    var id = param[2] + newPostKey + datee;
+    return id
+  }
+
+  getLastElement(){
+
   }
 }

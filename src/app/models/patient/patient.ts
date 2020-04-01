@@ -3,6 +3,8 @@ export class Patient {
     postnomPatient: string;
     dateNaissance: Date;
     lieuNaissance: string;
+    idFichePatient: string;
+    dateEnregistrementPatient: Date;
     
 
     /*constructor(nom: string, postnom: string, datenaissance: Date, lieunaissance: string){

@@ -38,7 +38,10 @@ export class PatientService {
     );
   }
 
+
+
   getSinglePatient(id: number){
+    
     return new Promise(
       (resolve, reject) => {
         firebase.database().ref('/patients/' + id).once('value').then(
@@ -63,4 +66,6 @@ export class PatientService {
     this.savePatients();
     this.emettrePatients();
   }
+
+  
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+
 import { HeaderComponent } from './header/header.component';
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
@@ -20,7 +21,10 @@ const routes: Routes = [
   { path: 'createpatient', component: CreatePatientComponent, canActivate:[AuthGuard] },
   { path: 'listepatients', component: PatientListeComponent, canActivate: [AuthGuard] },
   { path: 'viewpatient/view/:id', component: SinglePatientComponent },
-  {path: '**', component: QuatreCentQuatreComponent }
+  { path: 'not-found', component: QuatreCentQuatreComponent },
+  { path: '', redirectTo: 'signin', pathMatch: 'full' },
+  {path: '**', redirectTo: 'not-found' },
+  
 ];
 
 @NgModule({

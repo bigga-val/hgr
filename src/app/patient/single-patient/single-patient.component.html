@@ -6,12 +6,14 @@
                 <th>Postnom</th>
                 <th>Date de Naissance</th>
                 <th>Lieu de Naissance</th>
+                <th>N° Fiche</th>
             </thead>
             <tbody>
                 <td>{{ patient.nomPatient | uppercase }}</td>
                 <td>{{ patient.postnomPatient | uppercase }}</td>
                 <td>{{ patient.lieuNaissance | uppercase }}</td>
                 <td>{{ patient.dateNaissance }}</td>
+                <td>{{ patient.idFichePatient }}</td>
             </tbody>
         </table>
         
