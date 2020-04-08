@@ -1,4 +1,5 @@
 export class Patient {
+    id: string;
     nomPatient: string;
     postnomPatient: string;
     dateNaissance: Date;

@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Patient } from '../models/patient/patient';
 import * as firebase from 'firebase';
+
 import { resolve, reject } from 'q';
+
 
 @Injectable({
   providedIn: 'root'
@@ -55,6 +57,7 @@ export class PatientService {
     );
   }
   removePatient(patient: Patient){
+    
     const patientIndexToremove = this.patients.findIndex(
       (patientElement) => {
         if(patientElement === patient) {

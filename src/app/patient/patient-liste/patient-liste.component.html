@@ -4,7 +4,7 @@
         <div class="list-group">
             <table class="table table-hover">
                 <thead>
-                    <th>#</th>
+                    <!--th>#</th-->
                     <th>Nom</th>
                     <th>Postnom</th>
                     <th>Date de naissance</th>
@@ -14,14 +14,14 @@
                 </thead>
                 <tbody>
                     
-                    <tr *ngFor="let patient of patients; let i = index" (click)="onViewPatient(i)">
-                        <td>{{ i }}</td>
+                    <tr *ngFor="let patient of patients; let i = index">
+                        <!--td>{{ i }}</td-->
                         <td>{{ patient.nomPatient }}</td>
                         <td>{{ patient.postnomPatient }}</td>
                         <td>{{ patient.dateNaissance }}</td>
                         <td>{{ patient.lieuNaissance }} </td>
                         <td>{{ patient.idFichePatient }} </td>
-                        <td > <a href="" (click)='onViewPatient(i)'> voir </a></td>
+                        <td > <a href="" (click)='update(i)'> voir </a></td>
                     </tr>
                 </tbody>
             </table>

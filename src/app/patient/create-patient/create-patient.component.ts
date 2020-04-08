@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PatientService } from '../../services/patient.service';
 import { Router } from '@angular/router'
 import * as firebase from 'firebase';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore'
 
 
 
@@ -13,15 +14,21 @@ import * as firebase from 'firebase';
 })
 export class CreatePatientComponent implements OnInit {
 
+  db: AngularFirestore;
   createPatientForm : FormGroup;
   loading = false;
   fileUrl: string = '';
   loaded = false;
+  patientCollection: AngularFirestoreCollection;
+
 
   constructor(private formBuilder: FormBuilder,
               private patientService: PatientService,
-              private router: Router
-              ) { }
+              private router: Router,
+              private afs: AngularFirestore
+              ) { 
+                this.patientCollection = this.afs.collection('patients');
+              }
 
   ngOnInit() {
     this.initForm();
@@ -46,8 +53,9 @@ export class CreatePatientComponent implements OnInit {
       dateNaissance: this.createPatientForm.get('dateNaissance').value,
       dateEnregistrementPatient: new Date(),
       idFichePatient: fiche,
+      id: this.afs.createId()
     };
-    this.patientService.createNewPatient(patient);
+    this.patientCollection.add(patient);
     this.router.navigate(['/createfiche']);
   
     // if(this.fileUrl && this.fileUrl !== '') {

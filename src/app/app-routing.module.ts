@@ -10,11 +10,13 @@ import { AuthGuard } from './guards/auth.guard';
 import { CreatePatientComponent } from './patient/create-patient/create-patient.component';
 import { PatientListeComponent } from './patient/patient-liste/patient-liste.component';
 import { SinglePatientComponent } from './patient/single-patient/single-patient.component';
-import { QuatreCentQuatreComponent } from './quatre-cent-quatre/quatre-cent-quatre.component'
+import { QuatreCentQuatreComponent } from './quatre-cent-quatre/quatre-cent-quatre.component';
+import { HomeComponent } from './home/home.component';
+
 
 
 const routes: Routes = [
-  { path: 'header', component: HeaderComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'createfiche', component: CreateFicheComponent, canActivate:[AuthGuard] },
@@ -22,7 +24,7 @@ const routes: Routes = [
   { path: 'listepatients', component: PatientListeComponent, canActivate: [AuthGuard] },
   { path: 'viewpatient/view/:id', component: SinglePatientComponent },
   { path: 'not-found', component: QuatreCentQuatreComponent },
-  { path: '', redirectTo: 'signin', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {path: '**', redirectTo: 'not-found' },
   
 ];

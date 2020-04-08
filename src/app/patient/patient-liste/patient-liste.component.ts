@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { PatientService } from '../../services/patient.service';
+import { Component, OnInit } from '@angular/core';
 import { Patient } from '../../models/patient/patient';
+//import { PatientService } from '../../services/patient.service';
+import { PatientsService } from '../../services/patients.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -10,35 +11,36 @@ import { Router } from '@angular/router';
   templateUrl: './patient-liste.component.html',
   styleUrls: ['./patient-liste.component.css']
 })
-export class PatientListeComponent implements OnInit, OnDestroy {
+export class PatientListeComponent implements OnInit {
 
   patients: Patient[];
   patientSubscription: Subscription;
 
-  constructor(private patientService: PatientService, private router: Router) { } 
+  constructor(private patientsService: PatientsService, private router: Router) { } 
 
+  
   ngOnInit(): void {
-    this.patientSubscription = this.patientService.patientSubject.subscribe(
-      (patients:  Patient[]) => {
-        this.patients = patients;
-      }
-    );
-    this.patientService.getPatients();
-    this.patientService.emettrePatients();
+  
+      this.patientsService.getPatients().subscribe(data => {
+        this.patients = data.map(e => {
+          return {
+            id: e.payload.doc.id
+            
+          } as Patient;
+        })
+      });
   }
- onNewPatient(){
-   this.router.navigate(['/createpatient', 'new']);
+
+
+ create(patient: Patient){
+   this.patientsService.createPatient(patient);
  }
  
- onViewPatient(id: number){
-   this.router.navigate(['/viewpatient', 'view', id]);
+ update(patient: Patient){
+   this.patientsService.updatePatient(patient);
  }
 
- onDeletePatient(patient: Patient){
-  this.patientService.removePatient(patient);
- }
-
- ngOnDestroy(){
-   this.patientSubscription.unsubscribe();
+ delete(patient: Patient){
+   this.patientsService.deletePatient(patient);
  }
 }
