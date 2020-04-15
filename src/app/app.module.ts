@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { SignupComponent } from './signup/signup.component';
@@ -16,24 +17,35 @@ import { PatientListeComponent } from './patient/patient-liste/patient-liste.com
 import { SinglePatientComponent } from './patient/single-patient/single-patient.component';
 import { QuatreCentQuatreComponent } from './quatre-cent-quatre/quatre-cent-quatre.component';
 
+
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFirestore } from '@angular/fire/firestore/firestore';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 import {environment} from '../environments/environment';
 //import { environment } from 'src/environments/environment.prod';
 import * as firebase from 'firebase';
 import { HomeComponent } from './home/home.component';
 
+import { RouterModule } from '@angular/router';
+import { PatientsService } from './services/patients.service';
+
 firebase.initializeApp(environment.firebaseConfig);
 
 
 @NgModule({
   imports: [
-    BrowserModule,
+    AngularFirestoreModule,
     AppRoutingModule,
-    FormsModule, ReactiveFormsModule,
+    BrowserModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule
+    
   ],
   declarations: [
     AppComponent,
@@ -48,6 +60,9 @@ firebase.initializeApp(environment.firebaseConfig);
     HomeComponent,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent], 
+  exports: [
+    RouterModule
+  ]
 })
 export class AppModule { }

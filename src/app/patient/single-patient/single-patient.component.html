@@ -9,11 +9,19 @@
                 <th>N° Fiche</th>
             </thead>
             <tbody>
-                <td>{{ patient.nomPatient | uppercase }}</td>
-                <td>{{ patient.postnomPatient | uppercase }}</td>
-                <td>{{ patient.lieuNaissance | uppercase }}</td>
-                <td>{{ patient.dateNaissance }}</td>
-                <td>{{ patient.idFichePatient }}</td>
+                <tr>
+                    <td>{{ id }}</td>
+                    <td>{{ patient }}</td>
+                </tr>
+                <tr *ngFor="let pat of patient">
+                    <td>{{ pat.nomPatient }}</td>
+                    <td>{{ pat.postnomPatient }}</td>
+                    <td>{{ pat.lieuNaissance }}</td>
+                    <td>{{ pat.dateNaissance }}</td>
+                    <td>{{ pat.idFichePatient }}</td>
+                    
+                </tr>
+                
             </tbody>
         </table>
         

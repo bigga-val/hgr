@@ -22,10 +22,10 @@ const routes: Routes = [
   { path: 'createfiche', component: CreateFicheComponent, canActivate:[AuthGuard] },
   { path: 'createpatient', component: CreatePatientComponent, canActivate:[AuthGuard] },
   { path: 'listepatients', component: PatientListeComponent, canActivate: [AuthGuard] },
-  { path: 'viewpatient/view/:id', component: SinglePatientComponent },
+  { path: 'viewpatient/:id', component: SinglePatientComponent },
   { path: 'not-found', component: QuatreCentQuatreComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  {path: '**', redirectTo: 'not-found' },
+  { path: '**', redirectTo: 'not-found' },
   
 ];
 

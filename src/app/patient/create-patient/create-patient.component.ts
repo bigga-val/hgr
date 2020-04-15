@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PatientService } from '../../services/patient.service';
+import { PatientsService } from '../../services/patients.service';
 import { Router } from '@angular/router'
 import * as firebase from 'firebase';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore'
@@ -23,7 +23,7 @@ export class CreatePatientComponent implements OnInit {
 
 
   constructor(private formBuilder: FormBuilder,
-              private patientService: PatientService,
+              private patientsService: PatientsService,
               private router: Router,
               private afs: AngularFirestore
               ) { 
@@ -53,7 +53,9 @@ export class CreatePatientComponent implements OnInit {
       dateNaissance: this.createPatientForm.get('dateNaissance').value,
       dateEnregistrementPatient: new Date(),
       idFichePatient: fiche,
-      id: this.afs.createId()
+      active: true,
+      archive: false
+      //id: this.afs.createId()
     };
     this.patientCollection.add(patient);
     this.router.navigate(['/createfiche']);
@@ -66,10 +68,11 @@ export class CreatePatientComponent implements OnInit {
   }
 
   createFiche(param){
-    var newPostKey = firebase.database().ref().push().key;
+    var newPostKey = this.afs.createId()
     var dat = new Date();
     var datee = dat.getMonth();
-    var id = param[2] + newPostKey + datee;
+    datee += 1;
+    var id = param[2] + newPostKey[3] + datee;
     return id
   }
 
